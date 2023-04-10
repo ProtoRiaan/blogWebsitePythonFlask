@@ -1,19 +1,27 @@
-FROM ubuntu:latest
+FROM python:3.12.0a7-slim-bullseye
 
 MAINTAINER Riaan Schuld 
 
-RUN apt-get update -y && apt-get install -y python3-pip python3-dev
-
 CMD ["ufw allow 5000"]
 
-COPY ./requirements.txt /app/requirements.txt
 
 WORKDIR /app
 
-RUN pip3 install -r requirements.txt
+# set environment variables
+ENV PYTHONDONTWRITEBYTECODE 1
+ENV PYTHONUNBUFFERED 1
 
-COPY ./app.py /app
+# install dependencies
+RUN pip install --upgrade pip
+COPY ./requirements.txt /usr/src/app/requirements.txt
+RUN pip install -r requirements.txt
 
+
+#copy project
+COPY . .
+
+
+#run app.py
 ENTRYPOINT [ "python3" ]
 
 CMD [ "app.py" ]
