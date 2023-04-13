@@ -4,7 +4,6 @@ MAINTAINER Riaan Schuld
 
 CMD ["ufw allow 5000"]
 
-
 WORKDIR /app
 
 # set environment variables
@@ -13,7 +12,7 @@ ENV PYTHONUNBUFFERED 1
 
 # install dependencies
 RUN pip install --upgrade pip
-COPY ./requirements.txt /usr/src/app/requirements.txt
+COPY ./requirements.txt /app/requirements.txt
 RUN pip install -r requirements.txt
 
 
