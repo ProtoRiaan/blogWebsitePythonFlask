@@ -1,4 +1,4 @@
-FROM python:3.12.0a7-slim-bullseye
+FROM python:3.10.11-slim-bullseye
 
 MAINTAINER Riaan Schuld 
 
