@@ -2,6 +2,9 @@
 
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
+from flask_bcrypt import Bcrypt
+from flask_login import LoginManager
+
 
   #instantiate the flask instance 
 app = Flask(__name__)
@@ -14,5 +17,11 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'  #relative path for 
 
   #insantiate the DB
 db = SQLAlchemy(app)
+
+  #instantiating password hashing  
+bcrypt = Bcrypt(app)
+
+  #Instantiating login manager
+login_manager=LoginManager(app)
 
 from flaskblog import views
