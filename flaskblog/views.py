@@ -2,6 +2,7 @@
 
 import secrets
 import os
+from PIL import Image
 from flask import render_template, url_for, flash, redirect, request
 from flaskblog import app, db, bcrypt
 from flaskblog.forms import RegistrationForm, LoginForm, UpdateAccountForm
@@ -81,14 +82,23 @@ def Logout():
     return redirect(url_for('Home'))
 
 def Save_Picture(formPicture):
-    random_hex = secrets.token_hex(8)
-    _, fileEXT = os.path.splitext(formPicture.filename)
+
+    #delete old profile pic from disk
     currentPictureFileName = current_user.image_file
     currentPicturePath = os.path.join(app.root_path, 'static/profile_pics', currentPictureFileName)
     os.remove(currentPicturePath)
+
+    #create random file name for new image file
+    random_hex = secrets.token_hex(8)
+    _, fileEXT = os.path.splitext(formPicture.filename)
     pictureFileName = random_hex + fileEXT
     picturePath = os.path.join(app.root_path, 'static/profile_pics', pictureFileName)
-    formPicture.save(picturePath)
+
+    #shrink image file and write to disk
+    outputSize = (125,125)
+    standardImage = Image.open(formPicture)
+    standardImage.thumbnail(outputSize)
+    standardImage.save(picturePath)
 
     return pictureFileName
 
