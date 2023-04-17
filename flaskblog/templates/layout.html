@@ -30,6 +30,7 @@
               <!-- Navbar Right Side -->
               <div class="navbar-nav">
                 {% if current_user.is_authenticated %}
+                  <a class="nav-item nav-link" href="{{ url_for('NewPost') }}">New Post</a>
                   <a class="nav-item nav-link" href="{{ url_for('Account') }}">Profile</a>
                   <a class="nav-item nav-link" href="{{ url_for('Logout') }}">Logout</a>
                 {% else %}

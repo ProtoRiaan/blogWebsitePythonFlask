@@ -5,7 +5,7 @@ import os
 from PIL import Image
 from flask import render_template, url_for, flash, redirect, request
 from flaskblog import app, db, bcrypt
-from flaskblog.forms import RegistrationForm, LoginForm, UpdateAccountForm
+from flaskblog.forms import RegistrationForm, LoginForm, UpdateAccountForm, PostFrom
 from flaskblog.models import User, Posts
 from flask_login import login_user, current_user, logout_user, login_required
 
@@ -83,7 +83,7 @@ def Logout():
 
 def Save_Picture(formPicture):
 
-    #delete old profile pic from disk
+    #delete old profile pic from disk if it is not default.jpg and exists
     currentPicturePath = os.path.join(app.root_path, 'static/profile_pics', current_user.image_file)
     if os.path.exists(currentPicturePath) and current_user.image_file != 'default.jpg':
         os.remove(currentPicturePath)
@@ -120,3 +120,15 @@ def Account():
         form.email.data = current_user.email
     image_file = url_for('static', filename='profile_pics/' + current_user.image_file)
     return render_template('account.html', title = 'Account', image_file=image_file, form=form)
+
+@app.route("/posts/new", methods=['GET', 'POST'])
+@login_required
+def NewPost():
+    form = PostFrom()
+    if form.validate_on_submit():
+        flash('Your post has been created!','success')
+        post = Posts(title=form.title.data, content=form.content.data, author=current_user)
+        db.session.add(post)
+        db.session.commit()
+        return redirect(url_for('Home'))
+    return render_template('create_post.html', title='New Post"', form=form)
