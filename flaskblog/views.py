@@ -84,9 +84,8 @@ def Logout():
 def Save_Picture(formPicture):
 
     #delete old profile pic from disk
-    if current_user.image_file != 'default.jpg':
-        currentPictureFileName = current_user.image_file
-        currentPicturePath = os.path.join(app.root_path, 'static/profile_pics', currentPictureFileName)
+    currentPicturePath = os.path.join(app.root_path, 'static/profile_pics', current_user.image_file)
+    if os.path.exists(currentPicturePath) and current_user.image_file != 'default.jpg':
         os.remove(currentPicturePath)
 
     #create random file name for new image file
