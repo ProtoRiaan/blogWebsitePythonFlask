@@ -46,9 +46,9 @@ body {
   }
   
   .article-img {
-    height: 65px;
-    width: 65px;
-    margin-right: 16px;
+    height: 50px;
+    width: 50px;
+    margin-right: 15px;
   }
   
   .article-metadata {
