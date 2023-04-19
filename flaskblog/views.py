@@ -3,9 +3,9 @@
 import secrets
 import os
 from PIL import Image
-from flask import render_template, url_for, flash, redirect, request
+from flask import render_template, url_for, flash, redirect, request, abort
 from flaskblog import app, db, bcrypt
-from flaskblog.forms import RegistrationForm, LoginForm, UpdateAccountForm, PostFrom
+from flaskblog.forms import RegistrationForm, LoginForm, UpdateAccountForm, PostForm
 from flaskblog.models import User, Posts
 from flask_login import login_user, current_user, logout_user, login_required
 
@@ -111,11 +111,37 @@ def Account():
 @app.route("/posts/new", methods=['GET', 'POST'])
 @login_required
 def NewPost():
-    form = PostFrom()
+    form = PostForm()
     if form.validate_on_submit():
         flash('Your post has been created!','success')
         post = Posts(title=form.title.data, content=form.content.data, author=current_user)
         db.session.add(post)
         db.session.commit()
-        return redirect(url_for('Home'))
-    return render_template('create_post.html', title='New Post"', form=form)
+        return redirect(url_for('Blog'))
+    return render_template('create_post.html', title='New Post"', form=form,
+                           legend='New Post')
+
+
+@app.route("/posts/<int:postID>")
+def Post(postID):
+    post = Posts.query.get_or_404(postID)
+    return render_template('post.html', title=post.title, post=post)
+
+@app.route("/posts/<int:postID>/update", methods=['GET','POST'])
+@login_required
+def PostUpdate(postID):
+    post = Posts.query.get_or_404(postID)
+    if post.author != current_user:
+        abort(403)
+    form = PostForm()
+    if form.validate_on_submit():
+        post.title = form.title.data
+        post.content = form.content.data
+        db.session.commit()
+        flash('Your post has been updated!', 'success')
+        return redirect(url_for('Post', postID=post.id))
+    elif request.method == 'GET':
+        form.title.data = post.title
+        form.content.data = post.content
+    return render_template('create_post.html', title='Update ' + post.title, form=form,
+                           legend='Update Post')

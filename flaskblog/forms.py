@@ -61,7 +61,7 @@ class UpdateAccountForm(FlaskForm):
                 raise ValidationError('This email address is already in use')
 
 
-class PostFrom(FlaskForm):
+class PostForm(FlaskForm):
     title = StringField('Title', validators=[InputRequired()])
 
     content = TextAreaField('Content', validators=[InputRequired()])

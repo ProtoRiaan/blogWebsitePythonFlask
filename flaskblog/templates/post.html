@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+{% block title %} BlogPost {% endblock title %}
+{% block content %}
+    <article class="media content-section">
+        <div class="d-flex">
+            <div class="flex-shrink-0">
+                <img class="rounded-circle article-img" src="{{ url_for('static', filename='profile_pics/' + post.author.image_file) }}">
+            </div>
+            <div class="media-body flex-grow-1">
+                <div class="article-metadata">
+                    <a href="#" class="mr-2">{{ post.author.username }}</a>
+                    <small class="text-muted">{{ post.date_posted.strftime('%Y-%m-%d') }}</small>
+                    {% if post.author == current_user %}
+                        <div>
+                            <a class="btn btn-secondary btn-sm m-l" href="{{ url_for('PostUpdate', postID=post.id)}}">Update</a>
+                        </div>
+                    {% endif%}
+                </div>
+                <h4 class="article-title">{{ post.title }}</h4>
+                <p class="article-content">{{ post.content }}</p>
+            </div> 
+        </div>
+    </article>
+{% endblock content %}
