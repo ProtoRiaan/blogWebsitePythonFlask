@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
-{% block title %} Blog {% endblock title %}
+{% block title %} User Posts {% endblock title %}
 {% block content %}
-    <h1>This is the blog page</h1>
+    <h1>Posts by {{ User.username }} ({{ posts.total}}) </h1>
     {% for post in posts.items %}
         <article class="media content-section">
             <div class="d-flex">
@@ -22,9 +22,9 @@
     {% for pageNum in posts.iter_pages(left_edge=1, right_edge=1, left_current=1, right_current=2) %}
         {% if pageNum %}
             {% if posts.page == pageNum %}
-                <a class="btn btn-info mb-4"  href="{{ url_for('Blog', page=pageNum)}}">{{ pageNum }}</a>
+                <a class="btn btn-info mb-4"  href="{{ url_for('UserPost', username=user.username, page=pageNum)}}">{{ pageNum }}</a>
             {% else %} 
-                <a class="btn btn-outline-info mb-4"  href="{{ url_for('Blog', page=pageNum)}}">{{ pageNum }}</a>
+                <a class="btn btn-outline-info mb-4"  href="{{ url_for('UserPost', username=user.username, page=pageNum)}}">{{ pageNum }}</a>
             {% endif %}
         {% else %}
             ... 

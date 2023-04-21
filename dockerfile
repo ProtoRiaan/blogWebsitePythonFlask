@@ -30,6 +30,6 @@ RUN pip install --user -r requirements.txt
 COPY --chown=flask:flask . .
 
 #run app.py
-ENTRYPOINT [ "/home/flask/.local/bin/flask" ]
+ENTRYPOINT [ "/home/flask/.local/bin/gunicorn" ]
 
-CMD [ "run", "--host=0.0.0.0" ]
+CMD [ "-w 4", "-b 0.0.0.0", "flaskblog:app" ]

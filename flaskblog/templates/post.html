@@ -9,7 +9,7 @@
             <div class="media-body flex-grow-1">
                 <div class="article-metadata d-flex">
                     <div class="p2 flex-grow-1">
-                        <a href="#" class="mr-2">{{ post.author.username }}</a>
+                        <a href="{{ url_for('UserPost', username=post.author.username) }}" class="mr-2">{{ post.author.username }}</a>
                         <small class="text-muted">{{ post.date_posted.strftime('%Y-%m-%d') }}</small>
                     </div>
                     {% if post.author == current_user %}
