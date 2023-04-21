@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 {% block title %} User Posts {% endblock title %}
 {% block content %}
-    <h1>Posts by {{ User.username }} ({{ posts.total}}) </h1>
+    <h1>Posts by {{ user.username }} ({{ posts.total}}) </h1>
     {% for post in posts.items %}
         <article class="media content-section">
             <div class="d-flex">

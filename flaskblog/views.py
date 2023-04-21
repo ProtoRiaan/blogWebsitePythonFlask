@@ -165,6 +165,6 @@ def UserPost(username):
     posts = Posts.query.filter_by(author=user)\
         .order_by(Posts.date_posted.desc())\
         .paginate(page=page, per_page=5)
-    return render_template('blog.html', posts=posts)
+    return render_template('user.html', posts=posts, user=user)
 
 
