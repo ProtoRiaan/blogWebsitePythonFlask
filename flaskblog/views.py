@@ -189,7 +189,6 @@ def ResetRequest():
     form = ResetRequestForm()
     if form.validate_on_submit():
         user = User.query.filter_by(email=form.email.data).first()
-        flash('debug helper : we made it this far')
         SendResetEmail(user)
         flash ('An email has been sent with instructions to reset your password','info')
         return redirect(url_for('Login'))
