@@ -4,7 +4,7 @@ import secrets
 import os
 from PIL import Image
 from flask import render_template, url_for, flash, redirect, request, abort
-from flaskblog import app, db, bcrypt
+from flaskblog import app, db, bcrypt, mail
 from flaskblog.forms import RegistrationForm, LoginForm, UpdateAccountForm, PostForm, ResetConfigForm, ResetRequestForm
 from flaskblog.models import User, Posts
 from flask_login import login_user, current_user, logout_user, login_required
@@ -171,11 +171,16 @@ def UserPost(username):
 
 def SendResetEmail(user):
     token = user.GenerateToken()
-    msg = Message('Password Reset Request', sender='noreply@demo.com', recipients=[user.email])
+    msg = Message('Password Reset Request', 
+                  sender='flaskblog.rhschuld@gmail.com', 
+                  recipients=[user.email])
     msg.body = f'''To rest your password, visit the following link:
+
     {url_for('ResetWithToken', token=token, _external=True)}
     
-    If you did not make this request then simply ignore this email and no change will be made'''
+    If you did not make this request then simply ignore this email and no change will be made
+    '''
+    mail.send(msg)
 
 @app.route("/reset_password", methods=['GET','POST'])
 def ResetRequest():
@@ -184,18 +189,21 @@ def ResetRequest():
     form = ResetRequestForm()
     if form.validate_on_submit():
         user = User.query.filter_by(email=form.email.data).first()
+        flash('debug helper : we made it this far')
         SendResetEmail(user)
         flash ('An email has been sent with instructions to reset your password','info')
         return redirect(url_for('Login'))
+
     return render_template('reset_request.html', title = 'Reset Password', form=form)
+        
 
 @app.route("/reset_password/<token>", methods=['GET','POST'])
 def ResetWithToken(token):
     if current_user.is_authenticated:
         return redirect(url_for('Home'))
-    user = User.confirm(token)
-    if user is None:
-        flash('That is an invalid or expired token', 'warning')
+    user = User.ConfirmToken(token)
+    if user is False:
+        flash('Your password reset request is invalid or has expired', 'warning')
         return redirect(url_for('reset_request'))
     form = ResetConfigForm()
     if form.validate_on_submit():

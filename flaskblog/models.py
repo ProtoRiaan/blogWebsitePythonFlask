@@ -34,7 +34,7 @@ class User(db.Model,UserMixin):
         )
         return resetToken
     
-    def confirm(token):
+    def ConfirmToken(token):
         try:
             tokenData = jwt.decode(
                 token,
