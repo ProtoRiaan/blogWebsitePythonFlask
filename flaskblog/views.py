@@ -5,7 +5,7 @@ import os
 from PIL import Image
 from flask import render_template, url_for, flash, redirect, request, abort
 from flaskblog import app, db, bcrypt
-from flaskblog.forms import RegistrationForm, LoginForm, UpdateAccountForm, PostForm
+from flaskblog.forms import RegistrationForm, LoginForm, UpdateAccountForm, PostForm, ResetConfigForm, ResetRequestForm
 from flaskblog.models import User, Posts
 from flask_login import login_user, current_user, logout_user, login_required
 
@@ -168,3 +168,28 @@ def UserPost(username):
     return render_template('user.html', posts=posts, user=user)
 
 
+def SendResetEmail(user):
+    pass
+
+@app.route("/reset_password", methods=['GET','POST'])
+def ResetRequest():
+    if current_user.is_authenticated:
+        return redirect(url_for('Home'))
+    form = ResetRequestForm()
+    if form.validate_on_submit():
+        user = User.query.filter_by(email=form.email.data).first()
+        SendResetEmail(user)
+        flash ('An email has been sent with instructions to reset your password','info')
+        return redirect(url_for('Login'))
+    return render_template('reset_request.html', title = 'Reset Password', form=form)
+
+@app.route("/reset_password/<token>", methods=['GET','POST'])
+def ResetWithToken():
+    if current_user.is_authenticated:
+        return redirect(url_for('Home'))
+    user = User.confirm(token)
+    if user is None:
+        flash('That is an invalid or expired token', 'warning')
+        return redirect(url_for('reset_request'))
+    form = ResetConfigForm()
+    return render_template('reset_with_token.html', title = 'Reset Password', form=form)

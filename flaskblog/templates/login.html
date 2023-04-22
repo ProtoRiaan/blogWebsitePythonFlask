@@ -6,7 +6,7 @@
             {{ form.hidden_tag() }}
             <fieldset class="form-group">
                 <legend class="border-bottom mb-4">Log In</legend>
-                <div class="form-group mb-2">
+                <div class="form-group mb-3">
                     {{ form.email.label(class="form-control-label") }}
                    
                     {% if form.email.errors %}
@@ -20,7 +20,7 @@
                         {{ form.email(class="form-control form-control-lg") }}
                     {% endif %}                    
                 </div>
-                <div class="form-group mb-2">
+                <div class="form-group mb-3">
                     {{ form.password.label(class="form-control-label") }}
 
                     {% if form.password.errors %}
@@ -34,7 +34,7 @@
                         {{ form.password(class="form-control form-control-lg") }}
                     {% endif %}                   
                 </div>
-                <div class="form-check">
+                <div class="form-check mb-3">
                     {{ form.remember(class="form-check-input") }}
                     {{ form.remember.label(class="form.check-label") }}
                 </div>
@@ -43,7 +43,7 @@
                 {{ form.submit(class="btn btn-outline-info") }}
             </div>
             <small class="text-muted ml-2">
-                <a href="#">Forgot Password</a>
+                <a href="{{ url_for('ResetRequest') }}">Forgot Password</a>
             </small>
         </form>
     </div>

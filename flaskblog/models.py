@@ -1,8 +1,10 @@
 
 
+import jwt
 from datetime import datetime
-from flaskblog import db, login_manager
+from flaskblog import app, db, login_manager
 from flask_login import UserMixin
+
 
 
 
@@ -19,6 +21,31 @@ class User(db.Model,UserMixin):
     image_file = db.Column(db.String(20), nullable=False, default='default.jpg')
     password = db.Column(db.String(60), nullable=False)
     post = db.relationship('Posts', backref='author',lazy=True)
+
+    def GenerateToken(self, expiration=1800):
+        resetToken = jwt.encode(
+            {
+                "confirm": self.id,
+                "exp": datetime.datetime.now(tz=datetime.timezone.utc)
+                       + datetime.timedelta(seconds=expiration)
+            },
+            app.config['SECRET_KEY'],
+            algorithm="HS256"
+        )
+        return resetToken
+    
+    def confirm(token):
+        try:
+            tokenData = jwt.decode(
+                token,
+                app.config['SECRET_KEY'],
+                leeway=datetime.timedelta(seconds=10),
+                algorithms=["HS256"]
+            )
+            userID = tokenData.get('confirm')
+        except:
+            return False
+        return User.query.get(userID)
 
     def __repr__(self):
         return f"User('{self.username}','{self.email}','{self.image_file}')"
