@@ -1,8 +1,0 @@
-__pycache__/
-.venv/
-.git/
-instance/
-.gitignore
-.dockerignore
-.env
-setenvironment.sh
