@@ -23,11 +23,13 @@ FLASK_APP='flaskblog'
 # install dependencies
 
 COPY --chown=flask:flask ./requirements.txt /app/requirements.txt
-RUN pip install --user -r requirements.txt
+RUN pip install --no-cache-dir --user -r requirements.txt
 
 
 #copy project
 COPY --chown=flask:flask . .
+
+EXPOSE 8000
 
 #run app.py
 ENTRYPOINT [ "/home/flask/.local/bin/gunicorn" ]
