@@ -1,9 +1,0 @@
-#!/bin/bash
-
-export FLASK_APP=flaskblog
-
-export EMAIL_USR=flaskblog.rhschuld@gmail.com
-
-export EMAIL_PWD=mjdscayggfoyvclm
-
-export FLASK_APP_KEY=bacaa502f599eef8450625d66d247805 
