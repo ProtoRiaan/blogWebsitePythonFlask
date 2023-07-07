@@ -1,8 +1,8 @@
 
 
-from flask import Blueprint
+from flask import Blueprint,render_template
 
-main = Blueprint('posts',__name__)
+main = Blueprint('main',__name__)
 
 
 @main.route("/")

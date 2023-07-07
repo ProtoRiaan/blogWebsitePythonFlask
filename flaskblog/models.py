@@ -2,8 +2,9 @@
 
 import jwt
 from datetime import datetime, timedelta 
-from flaskblog import app, db, login_manager
+from flaskblog import db, login_manager
 from flask_login import UserMixin
+from flask import current_app
 
 
 
@@ -13,7 +14,7 @@ def load_user(user_id):
     return User.query.get(int(user_id))
 
 
-  #creating DB modles
+  #creating DB modules
 class User(db.Model,UserMixin):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(20), unique=True, nullable=False)
@@ -29,7 +30,7 @@ class User(db.Model,UserMixin):
                 "exp": datetime.utcnow()
                        + timedelta(seconds=expiration)
             },
-            app.config['SECRET_KEY'],
+            current_app.config['SECRET_KEY'],
             algorithm="HS256"
         )
         return resetToken
@@ -38,7 +39,7 @@ class User(db.Model,UserMixin):
         try:
             tokenData = jwt.decode(
                 token,
-                app.config['SECRET_KEY'],
+                current_app.config['SECRET_KEY'],
                 leeway=timedelta(seconds=10),
                 algorithms=["HS256"]
             )

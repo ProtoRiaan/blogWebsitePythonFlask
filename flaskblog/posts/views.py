@@ -1,15 +1,12 @@
 
 
 
-from flask import render_template, url_for, flash, redirect, request, abort
+from flask import render_template, url_for, flash, redirect, request, abort, Blueprint
 from flaskblog import db
-from flaskblog.forms import PostForm
-from flaskblog.models import Posts
+from flaskblog.posts.forms import PostForm
+from flaskblog.models import Posts, User
 from flask_login import current_user, login_required
 
-
-
-from flask import Blueprint
 
 posts = Blueprint('posts',__name__)
 
@@ -29,7 +26,7 @@ def NewPost():
         post = Posts(title=form.title.data, content=form.content.data, author=current_user)
         db.session.add(post)
         db.session.commit()
-        return redirect(url_for('Blog'))
+        return redirect(url_for('posts.Blog'))
     return render_template('create_post.html', title='New Post"', form=form,
                            legend='New Post')
 
@@ -51,7 +48,7 @@ def PostUpdate(postID):
         post.content = form.content.data
         db.session.commit()
         flash('Your post has been updated!', 'success')
-        return redirect(url_for('Post', postID=post.id))
+        return redirect(url_for('posts.Post', postID=post.id))
     elif request.method == 'GET':
         form.title.data = post.title
         form.content.data = post.content
@@ -67,8 +64,16 @@ def PostDelete(postID):
     db.session.delete((post))
     db.session.commit()
     flash('Your post has been deleted!', 'success')
-    return redirect(url_for('Blog'))
+    return redirect(url_for('posts.Blog'))
 
 
+@posts.route("/user/<string:username>")
+def UserPost(username):
+    page = request.args.get('page', 1, type=int)
+    user = User.query.filter_by(username=username).first_or_404()
+    posts = Posts.query.filter_by(author=user)\
+        .order_by(Posts.date_posted.desc())\
+        .paginate(page=page, per_page=5)
+    return render_template('user.html', posts=posts, user=user)
 
 

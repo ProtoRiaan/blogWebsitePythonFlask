@@ -10,10 +10,10 @@
                 </div>
                 <div class="media-body flex-grow-1">
                     <div class="article-metadata">
-                        <a href="{{ url_for('UserPost', username=post.author.username) }}" class="mr-2">{{ post.author.username }}</a>
+                        <a href="{{ url_for('posts.UserPost', username=post.author.username) }}" class="mr-2">{{ post.author.username }}</a>
                         <small class="text-muted">{{ post.date_posted.strftime('%Y-%m-%d') }}</small>
                     </div>
-                    <h4><a class="article-title" href="{{ url_for('Post', postID=post.id)}}">{{ post.title }}</a></h4>
+                    <h4><a class="article-title" href="{{ url_for('posts.Post', postID=post.id)}}">{{ post.title }}</a></h4>
                     <p class="article-content">{{ post.content }}</p>
                 </div>
             </div>
@@ -22,9 +22,9 @@
     {% for pageNum in posts.iter_pages(left_edge=1, right_edge=1, left_current=1, right_current=2) %}
         {% if pageNum %}
             {% if posts.page == pageNum %}
-                <a class="btn btn-info mb-4"  href="{{ url_for('UserPost', username=user.username, page=pageNum)}}">{{ pageNum }}</a>
+                <a class="btn btn-info mb-4"  href="{{ url_for('posts.UserPost', username=user.username, page=pageNum)}}">{{ pageNum }}</a>
             {% else %} 
-                <a class="btn btn-outline-info mb-4"  href="{{ url_for('UserPost', username=user.username, page=pageNum)}}">{{ pageNum }}</a>
+                <a class="btn btn-outline-info mb-4"  href="{{ url_for('posts.UserPost', username=user.username, page=pageNum)}}">{{ pageNum }}</a>
             {% endif %}
         {% else %}
             ... 

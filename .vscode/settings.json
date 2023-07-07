@@ -3,5 +3,8 @@
         "flaskblog",
         "userfunctions",
         "wtforms"
+    ],
+    "cSpell.ignoreWords": [
+        "SQLALCHEMY"
     ]
 }
