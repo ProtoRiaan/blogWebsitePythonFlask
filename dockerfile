@@ -34,4 +34,4 @@ EXPOSE 8000
 #run app.py
 ENTRYPOINT [ "/home/flask/.local/bin/gunicorn" ]
 
-CMD [ "-w 4", "-b 0.0.0.0", "flaskblog:app" ]
+CMD [ "-w 4", "-b 0.0.0.0", "run:app" ]
