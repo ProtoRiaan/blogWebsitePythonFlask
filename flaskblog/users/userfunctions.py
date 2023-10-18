@@ -16,7 +16,7 @@ def SendResetEmail(user):
                   recipients=[user.email])
     msg.body = f'''To rest your password, visit the following link:
 
-    {url_for('users.ResetWithToken', token=token, _external=True)}
+    {url_for('users.ResetWithToken', token=token, _external=True, _scheme='https')}
     
     If you did not make this request then simply ignore this email and no change will be made
     '''
