@@ -3,7 +3,7 @@
 {% block content %}
     <h1 class="text-center">Blog Posts</h1>
     {% for post in posts.items %}
-        <article class="media content-section">
+        <article class="media content-section border border-dark-subtle border-2">
             <div class="d-flex">
                 <div class="flex-shrink-0">
                     <img class="rounded-circle article-img" src="{{ url_for('static', filename='profile_pics/' + post.author.image_file) }}">

@@ -1,0 +1,26 @@
+<nav class="navbar navbar-expand-md navbar-dark bg-primary-subtle fixed-top">
+    <div class="container">
+      <a class="navbar-brand mr-4" href="{{ url_for('main.Home') }}">Blog and Projects</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarToggle">
+        <div class="navbar-nav me-auto">
+          <a class="nav-item nav-link {% if request.endpoint=='main.Archive' %}active {% endif %}" href="{{ url_for('main.Archive') }}">Projects</a>
+          <a class="nav-item nav-link {% if request.endpoint=='posts.Blog' %}active {% endif %}" href="{{ url_for('posts.Blog') }}">Blog</a>
+          <a class="nav-item nav-link {% if request.endpoint=='main.About' %}active {% endif %}" href="{{ url_for('main.About') }}">About</a>
+        </div>
+        <!-- Navbar Right Side -->
+        <div class="navbar-nav">
+          {% if current_user.is_authenticated %}
+            <a class="nav-item nav-link {% if request.endpoint=='posts.NewPost' %}active {% endif %}" href="{{ url_for('posts.NewPost') }}">New Post</a>
+            <a class="nav-item nav-link {% if request.endpoint=='users.Account' %}active {% endif %}" href="{{ url_for('users.Account') }}">Profile</a>
+            <a class="nav-item nav-link" href="{{ url_for('users.Logout') }}">Logout</a>
+          {% else %}
+            <a class="nav-item nav-link {% if request.endpoint=='users.Login' %}active {% endif %}" href="{{ url_for('users.Login') }}">Login</a>
+            <a class="nav-item nav-link {% if request.endpoint=='users.Register' %}active {% endif %}" href="{{ url_for('users.Register') }}">Register</a>
+          {% endif %}  
+        </div>
+      </div>
+    </div>
+  </nav>
