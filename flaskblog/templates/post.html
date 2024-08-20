@@ -7,9 +7,9 @@
                 <img class="rounded-circle article-img" src="{{ url_for('static', filename='profile_pics/' + post.author.image_file) }}">
             </div>
             <div class="media-body flex-grow-1">
-                <div class="article-metadata d-flex">
+                <div class="article-metadata d-flex border-bottom">
                     <div class="p2 flex-grow-1">
-                        <a href="{{ url_for('posts.UserPost', username=post.author.username) }}" class="mr-2">{{ post.author.username }}</a>
+                        <a href="{{ url_for('posts.UserPost', username=post.author.username) }}" class="mr-2 link-underline-dark link-info">{{ post.author.username }}</a>
                         <small class="text-muted">{{ post.date_posted.strftime('%Y-%m-%d') }}</small>
                     </div>
                     {% if post.author == current_user %}

@@ -3,17 +3,17 @@
 {% block content %}
     <h1 class="text-center">Blog Posts</h1>
     {% for post in posts.items %}
-        <article class="media content-section border border-dark-subtle border-2">
+        <article class="media content-section border border-dark-subtle bg-body-tertiary border-2"> 
             <div class="d-flex">
                 <div class="flex-shrink-0">
                     <img class="rounded-circle article-img" src="{{ url_for('static', filename='profile_pics/' + post.author.image_file) }}">
                 </div>
                 <div class="media-body flex-grow-1">
-                    <div class="article-metadata">
-                        <a href="{{ url_for('posts.UserPost', username=post.author.username) }}" class="mr-2">{{ post.author.username }}</a>
+                    <div class="article-metadata border-bottom">
+                        <a href="{{ url_for('posts.UserPost', username=post.author.username) }}" class="mr-2 link-underline-dark link-info">{{ post.author.username }}</a>
                         <small class="text-muted">{{ post.date_posted.strftime('%Y-%m-%d') }}</small>
                     </div>
-                    <h4><a class="article-title" href="{{ url_for('posts.Post', postID=post.id)}}">{{ post.title }}</a></h4>
+                    <h4><a class="article-title link-underline-dark link-body-emphasis" href="{{ url_for('posts.Post', postID=post.id)}}">{{ post.title }}</a></h4>
                     <p class="article-content">{{ post.content }}</p>
                 </div>
             </div>
