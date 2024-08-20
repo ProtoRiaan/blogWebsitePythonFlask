@@ -9,8 +9,8 @@ WORKDIR /app
 ARG UID=1000
 ARG GID=1000
 
-RUN groupadd -g "${GID}" flask \
-&& useradd --create-home --no-log-init -u "${UID}" -g "${GID}" flask \
+RUN addgroup -g "${GID}" flask \
+&& adduser --disabled-password --uid "${UID}" --ingroup flask flask \
 && chown flask:flask -R /app 
 
 USER flask
