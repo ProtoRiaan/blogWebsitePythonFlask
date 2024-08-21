@@ -52,4 +52,8 @@
             Not registered yet? <a class="ml-2" href="{{ url_for('users.Register') }}">Join the gang</a>
         </small>
     </div>
+    <p>
+        <a class="btn btn-primary" href="{{ url_for('users.oauth2_authorize', provider='google') }}">Login with Google</a>
+        <a class="btn btn-primary" href="{{ url_for('users.oauth2_authorize', provider='github') }}">Login with GitHub</a>
+      </p>
 {% endblock content %}
