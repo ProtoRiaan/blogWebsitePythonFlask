@@ -188,7 +188,8 @@ def oauth2_callback(provider):
     # find or create the user in the database
     user = db.session.scalar(db.select(User).where(User.email == email))
     if user is None:
-        user = User(email=email, username=email.split('@')[0])
+        hashed_password = bcrypt.generate_password_hash(secrets.token_urlsafe(14)).decode('utf-8)')
+        user = User(email=email, username=email.split('@')[0], password=hashed_password)
         db.session.add(user)
         db.session.commit()
 
