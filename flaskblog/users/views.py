@@ -112,7 +112,7 @@ def ResetWithToken(token):
 @users.route('/authorize/<provider>',methods=['GET'])
 def oauth2_authorize(provider):
     if not current_user.is_anonymous:
-        return redirect(url_for('index'))
+        return redirect(url_for('main.Home'))
 
     provider_data = current_app.config['OAUTH2_PROVIDERS'].get(provider)
     if provider_data is None:
