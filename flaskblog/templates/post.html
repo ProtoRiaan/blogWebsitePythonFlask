@@ -9,13 +9,16 @@
             <div class="media-body flex-grow-1">
                 <div class="article-metadata d-flex border-bottom">
                     <div class="p2 flex-grow-1">
-                        <a href="{{ url_for('posts.UserPost', username=post.author.username) }}" class="mr-2 link-underline-dark link-info">{{ post.author.username }}</a>
-                        <small class="text-muted">{{ post.date_posted.strftime('%Y-%m-%d') }}</small>
+                        <a href="{{ url_for('posts.UserPost', username=post.author.username) }}" class="mr-2 fs-5 link-underline-dark link-info align-middle">{{ post.author.username }}</a>
+                        
                     </div>
                     {% if post.author == current_user %}
                     <div class="p2">
-                        <a class="btn btn-outline-secondary btn-sm m-1 mb-2" href="{{ url_for('posts.PostUpdate', postID=post.id)}}">Update</a>
-                        <button type="button" class="btn btn-outline-danger btn-sm m-1 mb-2" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</button>
+                        <div><small class="text-muted float-end">{{ post.date_posted.strftime('%Y-%m-%d') }}</small></div>
+                        <div>
+                            <a class="btn btn-outline-secondary btn-sm m-1 mb-2" href="{{ url_for('posts.PostUpdate', postID=post.id)}}">Update</a>
+                            <button type="button" class="btn btn-outline-danger btn-sm m-1 mb-2" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</button>
+                        </div>
                     </div>
                    {% endif%}
                 </div>
