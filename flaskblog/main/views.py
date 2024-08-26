@@ -1,7 +1,8 @@
 
 
+from flask import Blueprint,render_template,current_app,send_from_directory
+import markdown
 import os
-from flask import Blueprint,render_template,send_from_directory,current_app
 
 main = Blueprint('main',__name__)
 
@@ -18,7 +19,10 @@ def favicon():
 
 @main.route("/about")
 def About():
-    return render_template('about.html', title = 'About')
+    aboutMDPath = os.path.join(current_app.root_path, 'static/about/about.md')
+    with open(aboutMDPath) as mdfile:
+        markdownContent = markdown.markdown(mdfile.read(), extensions=['fenced_code','codehilite'])
+    return render_template('about.html', title = 'About', markdownContent=markdownContent)
 
 
 @main.route("/archive")
