@@ -1,6 +1,8 @@
 
 
-from flask import Blueprint,render_template
+from flask import Blueprint,render_template,current_app
+import markdown
+import os
 
 main = Blueprint('main',__name__)
 
@@ -13,7 +15,10 @@ def Home():
 
 @main.route("/about")
 def About():
-    return render_template('about.html', title = 'About')
+    aboutMDPath = os.path.join(current_app.root_path, 'static/about/about.md')
+    with open(aboutMDPath) as mdfile:
+        markdownContent = markdown.markdown(mdfile.read(), extensions=['fenced_code','codehilite'])
+    return render_template('about.html', title = 'About', markdownContent=markdownContent)
 
 
 @main.route("/archive")
