@@ -1,4 +1,4 @@
-# Experience
+## Experience
 
 20 Years of porfessional manegerial and leadership experience
 20 Years of professional behavrioal Health experience
@@ -6,7 +6,7 @@
 4 Years of profesisonal Information Technology Experience
 A lifetime of tinkering with complex computer systems. 
 
-# Hobies
+## Hobies
 
 Weight lifting
 Mountian biking
@@ -16,7 +16,7 @@ Fish Keeping
 PC building
 Tinkering with Technology
 
-# Certifications
+## Certifications
 
 Just section is for markdown testing. Will be splitting this out into its own interactive article.
 
