@@ -9,4 +9,30 @@
             </div> 
         </div>
     </article>
+    <article>
+        <a data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+            <img id="imageresource" src="static/about/SecurityPlussmall.png">
+            Launch static backdrop modal
+        </a>
+          
+          <!-- Modal -->
+          <div class="modal fade" id="staticBackdrop" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h1 class="modal-title fs-5" id="staticBackdropLabel">Security Plus Certificate</h1>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <embed src="static/about/secplus.pdf" width="1110" height="600">
+                </div>
+                <!-- <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary">Understood</button>
+                </div> -->
+              </div>
+            </div>
+          </div>
+          
+    </article>
 {% endblock content %}
