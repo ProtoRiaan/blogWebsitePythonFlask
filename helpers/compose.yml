@@ -1,0 +1,27 @@
+---
+      services:
+        flaskJinjaBlog:
+          image: flaskblogtest
+          container_name: flaskJinjaBlog
+          restart: unless-stopped
+          volumes:
+            - ../instance:/app/instance
+            - ../flaskblog/static:/app/flaskblog/static
+          environment: 
+            - FLASK_APP=flaskblog
+            - EMAIL_USR=flaskblog.rhschuld@gmail.com
+            - EMAIL_PWD=gobelDGoook
+            - FLASK_APP_KEY=gobelDGoook
+            - GOOGLE_CLIENT_ID=gobelDGoook-gobelDGoook.apps.googleusercontent.com
+            - GOOGLE_CLIENT_SECRET=gobelDGoook-gobelDGoook
+            - GITHUB_CLIENT_ID=gobelDGoook
+            - GITHUB_CLIENT_SECRET=gobelDGoook
+          ports:
+            - 8080:8000
+          command:
+            - --log-level=info
+            - -w 4
+            - -b 0.0.0.0
+            - run:app 
+
+
