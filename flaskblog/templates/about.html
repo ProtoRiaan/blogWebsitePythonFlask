@@ -1,16 +1,8 @@
 {% extends "layout.html" %}
 {% block title %} About {% endblock title %}
 {% block content %}
-    <h1 class="text-center">About</h1>
+    <h2 class="text-center ">Certifications</h1>
     <article class="media content-section border bg-body-tertiary border-2">
-        <div class="d-flex">
-            <div class="media-body flex-grow-1">
-                <p class="article-content">{{ markdownContent | safe }}</p>
-            </div> 
-        </div>
-    </article>
-    <article class="media content-section border bg-body-tertiary border-2">
-        <h2 class="text-center ">Certifications</h1>
           <div class="container">
               <div class="row row-cols-3">
                 <div class="col">
@@ -60,6 +52,7 @@
                 </div>
               </div>
           </div>
+      
           
         <!-- Modal -->
         <div class="modal fade" id="a-pluspdf" tabindex="-1" aria-labelledby="a-pluspdfLabel" aria-hidden="true">
@@ -90,7 +83,25 @@
             </div>
           </div>
         </div>
-
+        
     </article>
+    <h2 class="text-center">Profession Experience</h2>
+    <article class="media content-section border bg-body-tertiary border-2">
+      <div class="d-flex">
+          <div class="media-body flex-grow-1">
+              <p class="article-content">{{ experiencemd | safe }}</p>
+          </div> 
+      </div>
+    </article>
+
+    <h2 class="text-center">Hobbies and Interests</h2>
+    <article class="media content-section border bg-body-tertiary border-2">
+        <div class="d-flex">
+            <div class="media-body flex-grow-1">
+                <p class="article-content">{{ hobbiesmd | safe }}</p>
+            </div> 
+        </div>
+    </article>
+
     
 {% endblock content %}

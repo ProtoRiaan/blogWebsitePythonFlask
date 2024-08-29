@@ -20,9 +20,12 @@ def favicon():
 @main.route("/about")
 def About():
     aboutMDPath = os.path.join(current_app.root_path, 'static/about/about.md')
+    hobbiesMDPath = os.path.join(current_app.root_path, 'static/about/hobbies.md')
     with open(aboutMDPath) as mdfile:
-        markdownContent = markdown.markdown(mdfile.read(), extensions=['fenced_code','codehilite'])
-    return render_template('about.html', title = 'About', markdownContent=markdownContent)
+        experiencemd = markdown.markdown(mdfile.read(), extensions=['fenced_code','codehilite'])
+    with open(hobbiesMDPath) as mdfile:
+        hobbiesmd = markdown.markdown(mdfile.read(), extensions=['fenced_code','codehilite'])
+    return render_template('about.html', title = 'About', experiencemd=experiencemd, hobbiesmd=hobbiesmd)
 
 
 @main.route("/archive")
