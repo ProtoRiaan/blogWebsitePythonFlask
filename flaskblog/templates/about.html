@@ -1,5 +1,63 @@
 {% extends "layout.html" %}
 {% block title %} About {% endblock title %}
 {% block content %}
-    <h1 class="text-center">About</h1>    
+    <h2 class="text-center ">Certifications</h1>
+    <article class="media certificate-content border bg-body-tertiary border-2">
+          <div class="container">
+              <div class="row row-cols-3 justify-content-md-center row-gap-3 mx-auto">
+                {% for vendor in certs %}
+                <div class="col">
+                  <h5 class="text-center certificate-title text-wrap">{{ vendor.vendor }}</h3>
+                  <div class="d-flex justify-content-evenly flex-wrap">
+                  {% for cert in vendor.certs %}
+                    <div class="image-wrapper "> 
+                      <a data-bs-toggle="modal" data-bs-target="#{{ cert.name }}pdf">
+                      <img class="image-bottom" src="static/about/{{ cert.baseFileName }}.png">
+                      <img class="image-top" src="static/about/{{ cert.baseFileName }}-hover.png">
+                      </a>
+                    </div>
+                  {% endfor %}
+                  </div>
+                </div>
+                {% endfor %} 
+          
+        <!-- Modal -->
+        {% for vendor in certs %}
+          {% for cert in vendor.certs %}
+          <div class="modal fade" id="{{ cert.name }}pdf" tabindex="-1" aria-labelledby="{{ cert.name }}pdfLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h1 class="modal-title fs-5" id="{{ cert.name }}pdf">{{ cert.name }} Certificate</h1>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <embed src="static/about/{{ cert.baseFileName }}.pdf" width="1110" height="600">
+                </div>
+              </div>
+            </div>
+          </div>
+          {% endfor %} 
+        {% endfor %} 
+      </article>
+
+    <h2 class="text-center">Professional Experience</h2>
+    <article class="media content-section border bg-body-tertiary border-2">
+      <div class="d-flex">
+          <div class="media-body flex-grow-1">
+              <p class="article-content">{{ experiencemd | safe }}</p>
+          </div> 
+      </div>
+    </article>
+
+    <h2 class="text-center">Hobbies and Interests</h2>
+    <article class="media content-section border bg-body-tertiary border-2">
+        <div class="d-flex">
+            <div class="media-body flex-grow-1">
+                <p class="article-content">{{ hobbiesmd | safe }}</p>
+            </div> 
+        </div>
+    </article>
+
+    
 {% endblock content %}

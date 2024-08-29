@@ -51,3 +51,39 @@ body {
   .navbar{
     box-shadow: 0px 9px 9px -4px rgba(0,0,0,.5);
   }
+
+  /*  Rollover image styles  */
+  .image-wrapper {
+    position: relative;
+  }
+  .image-top {
+    position: absolute;
+    padding: 2px;
+    height: 81px;
+    width: 81px;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transition: opacity .25s ease-out;
+  }
+  .image-bottom {
+    padding: 2px;
+    height: 81x;
+    width: 81px;
+    opacity: 1;
+    transition: opacity .25s ease-out;
+  }
+  .image-wrapper:hover .image-top{
+    opacity: 1;
+  }
+  .image-wrapper:hover .image-bottom{
+    opacity: 0;
+  }
+  .certificate-title {
+    margin-bottom: 10px;
+  }
+  .certificate-content {
+    padding: 10px 10px;
+    border-radius: 3px;
+    margin-bottom: 25px;
+  }

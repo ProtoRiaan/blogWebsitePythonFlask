@@ -39,7 +39,7 @@ def create_app(config_class=Config):
   login_manager.init_app(app)
   mail.init_app(app)
   migrate.init_app(app, db)
-
+  
   from flaskblog.users.views import users
   from flaskblog.posts.views import posts
   from flaskblog.main.views import main

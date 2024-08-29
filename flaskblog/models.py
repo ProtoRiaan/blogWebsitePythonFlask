@@ -60,3 +60,65 @@ class Posts(db.Model):
 
     def __repr__(self):
         return f"Posts('{self.title}','{self.date_posted}')"
+
+certs = [
+    {
+        "vendor" : "Comp TIA",
+        "certs" : [
+            {
+                "name" : "Security_Plus",
+                "baseFileName" : "secPlus"
+            },
+            {
+                "name" :"A_Plus",
+                "baseFileName" : "aPlus"
+            }
+
+        ]
+    },
+    {
+        "vendor" : "Cisco",
+        "certs" : [
+            {
+                "name" : "CCNA",
+                "baseFileName" : "default"
+            },
+            {
+                "name" : "DevNet",
+                "baseFileName" : "default"
+            },
+            {
+                "name" : "Security_Core",
+                "baseFileName" : "default"
+            }
+
+        ]
+    },
+    {
+        "vendor" : "Udemy",
+        "certs" : [
+            {
+                "name" : "SQL",
+                "baseFileName" : "default"
+            },
+            {
+                "name" : "Prometheus",
+                "baseFileName" : "default"
+            },
+            {
+                "name" : "Wire_Shark",
+                "baseFileName" : "default"
+            }
+
+        ]
+    },
+    {
+        "vendor" : "Other",
+        "certs" : [
+            {
+                "name" : "Nutanix",
+                "baseFileName" : "default"
+            }
+        ]
+    }
+]
