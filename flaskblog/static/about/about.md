@@ -41,8 +41,8 @@ __1 Year Data Center Engineering/Operations"__
 
 ### Management and Behavioral Health Experience
 
-20 Years of professional managerial and leadership.  
-20 Years of professional behavioral Health.
-20 Year of program design and implementation.
-20 Years of programmatic review documentation.
-20 Years of professional trainer. 
+- 20 Years of professional managerial and leadership.  
+- 20 Years of professional behavioral Health.
+- 20 Year of program design and implementation.
+- 20 Years of programmatic review documentation.
+- 20 Years of professional trainer. 
