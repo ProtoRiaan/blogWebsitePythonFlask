@@ -1,6 +1,8 @@
 
 
 from flask import Blueprint,render_template,current_app,send_from_directory
+from flaskblog.models import certs
+
 import markdown
 import os
 
@@ -25,7 +27,7 @@ def About():
         experiencemd = markdown.markdown(mdfile.read(), extensions=['fenced_code','codehilite'])
     with open(hobbiesMDPath) as mdfile:
         hobbiesmd = markdown.markdown(mdfile.read(), extensions=['fenced_code','codehilite'])
-    return render_template('about.html', title = 'About', experiencemd=experiencemd, hobbiesmd=hobbiesmd)
+    return render_template('about.html', title = 'About', experiencemd=experiencemd, hobbiesmd=hobbiesmd, certs=certs)
 
 
 @main.route("/archive")
