@@ -7,6 +7,7 @@ load_dotenv()
 #configurations for the flask app instance
 class Config:
     SECRET_KEY = os.environ.get('FLASK_APP_KEY')
+    RESET_SECRET_KEY = os.environ.get('FLASK_RESET_KEY')
     SQLALCHEMY_DATABASE_URI = 'sqlite:///site.db'  #relative path for DB file
     SERVER_NAME = os.environ.get('FLASK_SERVER_NAME')
     

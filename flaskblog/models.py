@@ -30,7 +30,7 @@ class User(db.Model,UserMixin):
                 "exp": datetime.utcnow()
                        + timedelta(seconds=expiration)
             },
-            current_app.config['SECRET_KEY'],
+            current_app.config['RESET_SECRET_KEY'],
             algorithm="HS256"
         )
         return resetToken
@@ -39,7 +39,7 @@ class User(db.Model,UserMixin):
         try:
             tokenData = jwt.decode(
                 token,
-                current_app.config['SECRET_KEY'],
+                current_app.config['RESET_SECRET_KEY'],
                 leeway=timedelta(seconds=10),
                 algorithms=["HS256"]
             )

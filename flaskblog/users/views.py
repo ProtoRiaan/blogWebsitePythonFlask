@@ -25,6 +25,7 @@ def Register():
         user = User(username=form.username.data, email=form.email.data.lower(), password=hashed_password)
         db.session.add(user)
         db.session.commit()
+        current_app.logger.info(f'{user.email} successfully registered their account')
         flash(f'Your account has been created! Log in to get started!', 'success')
         return redirect(url_for('users.Login'))
     return render_template('register.html', title = 'Register', form=form)
@@ -103,6 +104,7 @@ def ResetWithToken(token):
         hashed_password = bcrypt.generate_password_hash(form.password.data).decode('utf-8)')
         user.password = hashed_password
         db.session.commit()
+        current_app.logger.info(f'{user.email} successfully reset their account')
         flash(f'Your password has been updated! Log in to get started!', 'success')
         return redirect(url_for('users.Login'))
 
