@@ -2,7 +2,8 @@
       services:
         flaskJinjaBlog:
           image: flaskblogtest
-          container_name: flaskJinjaBlog
+          build: ../.
+          container_name: flaskJinjablog
           restart: unless-stopped
           volumes:
             - ../instance:/app/instance
