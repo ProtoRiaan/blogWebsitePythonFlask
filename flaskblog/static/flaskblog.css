@@ -61,11 +61,11 @@ body {
     top: 0;
     left: 0;
     opacity: 0;
-    transition: opacity 1s ease-out;
+    transition: opacity .25s ease-out;
   }
   .image-bottom {
     opacity: 1;
-    transition: opacity 1s ease-out;
+    transition: opacity .25s ease-out;
   }
   .image-wrapper:hover .image-top{
     opacity: 1;
@@ -73,4 +73,6 @@ body {
   .image-wrapper:hover .image-bottom{
     opacity: 0;
   }
-
+  .certificate-title {
+    margin-bottom: 15px;
+  }
