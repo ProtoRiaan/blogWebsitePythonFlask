@@ -63,7 +63,7 @@ class Posts(db.Model):
 
 certs = [
     {
-        "vendor" : "CompTIA",
+        "vendor" : "Comp TIA",
         "certs" : [
             {
                 "name" : "Security_Plus",
@@ -116,19 +116,9 @@ certs = [
         "vendor" : "Other",
         "certs" : [
             {
-                "name" : "SQL",
-                "baseFileName" : "default"
-            },
-            {
-                "name" : "Prometheus",
-                "baseFileName" : "default"
-            },
-            {
-                "name" : "Wire_Shark",
+                "name" : "Nutanix",
                 "baseFileName" : "default"
             }
-
         ]
     }
-    
 ]
