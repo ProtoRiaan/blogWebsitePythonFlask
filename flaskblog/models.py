@@ -81,17 +81,12 @@ certs = [
         "certs" : [
             {
                 "name" : "CCNA",
-                "baseFileName" : "default"
+                "baseFileName" : "ccna"
             },
             {
                 "name" : "DevNet",
-                "baseFileName" : "default"
-            },
-            {
-                "name" : "Security_Core",
-                "baseFileName" : "default"
+                "baseFileName" : "devnet"
             }
-
         ]
     },
     {
@@ -99,25 +94,20 @@ certs = [
         "certs" : [
             {
                 "name" : "SQL",
-                "baseFileName" : "default"
+                "baseFileName" : "udemySQL"
             },
             {
-                "name" : "Prometheus",
-                "baseFileName" : "default"
-            },
-            {
-                "name" : "Wire_Shark",
-                "baseFileName" : "default"
+                "name" : "udemyProm",
+                "baseFileName" : "udemyProm"
             }
-
         ]
     },
     {
         "vendor" : "Other",
         "certs" : [
             {
-                "name" : "Nutanix",
-                "baseFileName" : "default"
+                "name" : "nutanix",
+                "baseFileName" : "nutanix"
             }
         ]
     }

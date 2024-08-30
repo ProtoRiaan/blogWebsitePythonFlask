@@ -5,9 +5,8 @@
 .env
 
 ### Flask ###
-instance/*
-!instance/.gitignore
 .webassets-cache
+.flaskblogenv
 
 ### Flask.Python Stack ###
 # Byte-compiled / optimized / DLL files
@@ -264,8 +263,14 @@ pyrightconfig.json
 # End of https://www.toptal.com/developers/gitignore/api/flask,python,dotenv
 
 
-.vscode/
-.flaskblogenv
+**/*.png
+**/*.pdf
+dev.py
+.flaskenv
+.gitignore
+.git
+.vscode
+helpers
+.dockerignore
+flaskblog/static/about/*
 
-*.png
-*.pdf
