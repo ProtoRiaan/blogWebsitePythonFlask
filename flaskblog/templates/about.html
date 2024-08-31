@@ -4,13 +4,13 @@
     <h2 class="text-center ">Certifications</h1>
     <article class="media certificate-content border bg-body-tertiary border-2">
           <div class="container">
-              <div class="row row-cols-2 justify-content-md-center row-gap-3 mx-auto">
+              <div class="row row-cols-2 justify-content-md-center align-items-stretch row-gap-3 mx-auto">
                 {% for vendor in certs %}
                 <div class="col-md-auto">
                   <h5 class="text-center certificate-title text-wrap">{{ vendor.vendor }}</h3>
-                  <div class="d-flex justify-content-evenly align-items-center flex-wrap">
+                  <div class="d-flex justify-content-evenly align-content-center flex-wrap">
                   {% for cert in vendor.certs %}
-                    <div class="image-wrapper mx-auto text-center "> 
+                    <div class="image-wrapper mx-auto text-center"> 
                       <a data-bs-toggle="modal" data-bs-target="#{{ cert.name }}pdf">
                       <img class="image-bottom" src="static/about/{{ cert.baseFileName }}.png">
                       <img class="image-top" src="static/about/{{ cert.baseFileName }}-hover.png">

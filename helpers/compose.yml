@@ -5,9 +5,6 @@
           build: ../.
           container_name: flaskJinjablog
           restart: unless-stopped
-          volumes:
-            - ../instance:/app/instance
-            - ../flaskblog/static:/app/flaskblog/static
           environment: 
             - FLASK_APP=flaskblog
             - EMAIL_USR=flaskblog.rhschuld@gmail.com

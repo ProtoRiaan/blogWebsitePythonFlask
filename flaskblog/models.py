@@ -110,5 +110,30 @@ certs = [
                 "baseFileName" : "nutanix"
             }
         ]
+    },
+    {
+        "vendor" : "Test",
+        "certs" : [
+            {
+                "name" : "SQL",
+                "baseFileName" : "udemySQL"
+            },
+            {
+                "name" : "udemyProm",
+                "baseFileName" : "udemyProm"
+            },
+            {
+                "name" : "SQL",
+                "baseFileName" : "default"
+            },
+            {
+                "name" : "SQL",
+                "baseFileName" : "default"
+            },
+            {
+                "name" : "SQL",
+                "baseFileName" : "default"
+            }
+        ]
     }
 ]

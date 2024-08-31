@@ -73,7 +73,7 @@ db.sqlite3
 db.sqlite3-journal
 
 # Flask stuff:
-instance/
+instance/*
 
 # Scrapy stuff:
 .scrapy
@@ -272,5 +272,4 @@ dev.py
 .vscode
 helpers
 .dockerignore
-flaskblog/static/about/*
-
+instance/*.*
