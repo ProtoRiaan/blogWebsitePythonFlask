@@ -1,5 +1,6 @@
 
 import os
+import yaml
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -46,3 +47,55 @@ class Config:
             'scopes': ['user:email'],
         },
     }
+
+    CERTS = [
+    {
+        "vendor" : "Comp TIA",
+        "certs" : [
+            {
+                "name" : "Security_Plus",
+                "baseFileName" : "secPlus"
+            },
+            {
+                "name" :"A_Plus",
+                "baseFileName" : "aPlus"
+            }
+
+        ]
+    },
+    {
+        "vendor" : "Cisco",
+        "certs" : [
+            {
+                "name" : "CCNA",
+                "baseFileName" : "ccna"
+            },
+            {
+                "name" : "DevNet",
+                "baseFileName" : "devnet"
+            }
+        ]
+    },
+    {
+        "vendor" : "Udemy",
+        "certs" : [
+            {
+                "name" : "SQL",
+                "baseFileName" : "udemySQL"
+            },
+            {
+                "name" : "udemyProm",
+                "baseFileName" : "udemyProm"
+            }
+        ]
+    },
+    {
+        "vendor" : "Other",
+        "certs" : [
+            {
+                "name" : "nutanix",
+                "baseFileName" : "nutanix"
+            }
+        ]
+    }
+]

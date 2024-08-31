@@ -1,7 +1,6 @@
 
 
 from flask import Blueprint,render_template,current_app,send_from_directory
-from flaskblog.models import certs
 
 import markdown
 import os
@@ -23,6 +22,7 @@ def favicon():
 def About():
     aboutMDPath = os.path.join(current_app.root_path, 'static/about/about.md')
     hobbiesMDPath = os.path.join(current_app.root_path, 'static/about/hobbies.md')
+    certs = current_app.config['CERTS']
     with open(aboutMDPath) as mdfile:
         experiencemd = markdown.markdown(mdfile.read(), extensions=['fenced_code','codehilite'])
     with open(hobbiesMDPath) as mdfile:
