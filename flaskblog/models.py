@@ -61,3 +61,46 @@ class Posts(db.Model):
     def __repr__(self):
         return f"Posts('{self.title}','{self.date_posted}')"
 
+projects = [
+    {
+        "projectID" : "1",
+        "projectTitle" : "Test Project One",
+        "projectImage" : "projectOneCard.png",
+        "projectCardText" : "This is the text of Test Project One Card",
+        "projectIntroduction" : " This is the introductory text for Test Project 1",
+        "projectSections" : [
+            { 
+                "sectionID" : "1",
+                "sectionImages" : ["s1-image1.png","s1-image2.png","s1-image3.png"],
+                "sectionText" : "One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed into a horrible vermin. He lay on his armour-like back, and if he lifted his head a little he could see his brown belly, slightly domed and divided by arches into stiff sections. The bedding was hardly able to cover it and seemed ready to slide off any moment. His many legs, pitifully thin compared with the size of the rest of him, waved about helplessly as he looked. \"What's happened to me?\" he thought. It wasn't a dream. His room, a proper human "
+            },
+            { 
+                "sectionID" : "2",
+                "sectionImages" : ["s2-image1.png","s2-image2.png","s2-image3.png"],
+                "sectionText" : "One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed into a horrible vermin. He lay on his armour-like back, and if he lifted his head a little he could see his brown belly, slightly domed and divided by arches into stiff sections. The bedding was hardly able to cover it and seemed ready to slide off any moment. His many legs, pitifully thin compared with the size of the rest of him, waved about helplessly as he looked. \"What's happened to me?\" he thought. It wasn't a dream. His room, a proper human "
+            },
+            
+        ]
+    },
+    {
+        "projectID" : "2",
+        "projectTitle" : "Test Project Two",
+        "projectImage" : "projectTwoCard.png",
+        "projectCardText" : "This is the text of Test Project Two Card",
+        "projectIntroduction" : " This is the introductory text for Test Project 2",
+        "projectSections" : [
+            { 
+                "sectionID" : "1",
+                "sectionImages" : ["s1-image1.png","s1-image2.png","s1-image3.png"],
+                "sectionText" : "One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed into a horrible vermin. He lay on his armour-like back, and if he lifted his head a little he could see his brown belly, slightly domed and divided by arches into stiff sections. The bedding was hardly able to cover it and seemed ready to slide off any moment. His many legs, pitifully thin compared with the size of the rest of him, waved about helplessly as he looked. \"What's happened to me?\" he thought. It wasn't a dream. His room, a proper human "
+            },
+            { 
+                "sectionID" : "2",
+                "sectionImages" : ["s2-image1.png","s2-image2.png","s2-image3.png"],
+                "sectionText" : "One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed into a horrible vermin. He lay on his armour-like back, and if he lifted his head a little he could see his brown belly, slightly domed and divided by arches into stiff sections. The bedding was hardly able to cover it and seemed ready to slide off any moment. His many legs, pitifully thin compared with the size of the rest of him, waved about helplessly as he looked. \"What's happened to me?\" he thought. It wasn't a dream. His room, a proper human "
+            },
+            
+        ]
+    }
+
+]
