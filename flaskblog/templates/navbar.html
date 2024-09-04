@@ -6,13 +6,16 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarToggle">
         <div class="navbar-nav me-auto">
-          <a class="nav-item nav-link {% if request.endpoint=='main.Archive' %}active {% endif %}" href="{{ url_for('main.Archive') }}">Projects</a>
+          <a class="nav-item nav-link {% if request.endpoint=='porjects.Projects' %}active {% endif %}" href="{{ url_for('projects.Projects') }}">Projects</a>
           <a class="nav-item nav-link {% if request.endpoint=='posts.Blog' %}active {% endif %}" href="{{ url_for('posts.Blog') }}">Blog</a>
           <a class="nav-item nav-link {% if request.endpoint=='main.About' %}active {% endif %}" href="{{ url_for('main.About') }}">About</a>
         </div>
         <!-- Navbar Right Side -->
         <div class="navbar-nav">
           {% if current_user.is_authenticated %}
+            {% if current_user.email == "rhschuld@gmail.com" %}
+              <a class="nav-item nav-link {% if request.endpoint=='posts.NewPost' %}active {% endif %}" href="{{ url_for('projects.Projects_Admin') }}">Project Admin</a>
+            {% endif %}
             <a class="nav-item nav-link {% if request.endpoint=='posts.NewPost' %}active {% endif %}" href="{{ url_for('posts.NewPost') }}">New Post</a>
             <a class="nav-item nav-link {% if request.endpoint=='users.Account' %}active {% endif %}" href="{{ url_for('users.Account') }}">Profile</a>
             <a class="nav-item nav-link" href="{{ url_for('users.Logout') }}">Logout</a>

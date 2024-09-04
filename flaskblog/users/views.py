@@ -28,7 +28,7 @@ def Register():
         current_app.logger.info(f'{user.email} successfully registered their account')
         flash(f'Your account has been created! Log in to get started!', 'success')
         return redirect(url_for('users.Login'))
-    return render_template('register.html', title = 'Register', form=form)
+    return render_template('users/register.html', title = 'Register', form=form)
 
 #Login Route
 @users.route("/login", methods=['GET','POST'])
@@ -48,7 +48,7 @@ def Login():
         else:
             current_app.logger.warning(f'Failed login from {request.remote_addr}')
             flash('Login Unsuccessful. Please check email and password','danger')
-    return render_template('login.html', title = 'Login', form=form)
+    return render_template('users/login.html', title = 'Login', form=form)
 
 #Logout Route
 @users.route("/logout")
@@ -75,7 +75,7 @@ def Account():
         form.username.data = current_user.username
         form.email.data = current_user.email
     image_file = url_for('static', filename='profile_pics/' + current_user.image_file)
-    return render_template('account.html', title = 'Account', image_file=image_file, form=form)
+    return render_template('users/account.html', title = 'Account', image_file=image_file, form=form)
 
 @users.route("/reset_password", methods=['GET','POST'])
 def ResetRequest():
@@ -89,7 +89,7 @@ def ResetRequest():
         flash ('An email has been sent with instructions to reset your password','info')
         return redirect(url_for('users.Login'))
 
-    return render_template('reset_request.html', title = 'Reset Password', form=form)
+    return render_template('users/reset_request.html', title = 'Reset Password', form=form)
         
 
 @users.route("/reset_password/<token>", methods=['GET','POST'])
@@ -109,7 +109,7 @@ def ResetWithToken(token):
         flash(f'Your password has been updated! Log in to get started!', 'success')
         return redirect(url_for('users.Login'))
 
-    return render_template('reset_with_token.html', title = 'Reset Password', form=form)
+    return render_template('users/reset_with_token.html', title = 'Reset Password', form=form)
 
 #Google Login
 

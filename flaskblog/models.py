@@ -61,7 +61,7 @@ class Posts(db.Model):
     def __repr__(self):
         return f"Posts('{self.title}','{self.date_posted}')"
 
-projects = [
+projects_data = [
     {
         "projectID" : "1",
         "projectTitle" : "Test Project One",

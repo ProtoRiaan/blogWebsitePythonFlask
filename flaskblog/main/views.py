@@ -11,7 +11,7 @@ main = Blueprint('main',__name__)
 @main.route("/")
 @main.route("/home")
 def Home():
-    return render_template('home.html', title = 'Home')
+    return render_template('main/home.html', title = 'Home')
 
 @main.route('/favicon.ico')
 def favicon():
@@ -27,9 +27,4 @@ def About():
         experiencemd = markdown.markdown(mdfile.read(), extensions=['fenced_code','codehilite'])
     with open(hobbiesMDPath) as mdfile:
         hobbiesmd = markdown.markdown(mdfile.read(), extensions=['fenced_code','codehilite'])
-    return render_template('about.html', title = 'About', experiencemd=experiencemd, hobbiesmd=hobbiesmd, certs=certs)
-
-
-@main.route("/archive")
-def Archive():
-    return render_template('archive.html', title = 'Archive')
+    return render_template('main/about.html', title = 'About', experiencemd=experiencemd, hobbiesmd=hobbiesmd, certs=certs)
