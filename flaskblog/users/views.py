@@ -46,7 +46,7 @@ def Login():
             nextPage = request.args.get('next')
             return redirect(nextPage) if nextPage else redirect(url_for('main.Home'))
         else:
-            current_app.logger.warning(f'Failed login from {request.remote_addr}')
+            current_app.logger.warning(f'Failed login from {request.headers.get("X-Forwarded-For")}')
             flash('Login Unsuccessful. Please check email and password','danger')
     return render_template('login.html', title = 'Login', form=form)
 
